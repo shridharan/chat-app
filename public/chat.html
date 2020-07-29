@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tennis Social App</title>
+        <link rel='stylesheet' href="./css/styles.css">
+        <link rel='icon' href="img/tennis-social-favicon.jpeg">
+    </head>
+    <body>
+        <!-- <h1>Tennis Social App</h1> -->
+        <div class="chat">
+            <div id="chat-sidebar" class="chat__sidebar">
+
+            </div>
+            <div class="chat__main">
+                <div id='messages' class="chat__messages "> </div>
+
+                <div class="compose">
+                    <form id='message-form'>
+                        <input type='text' id='chat' placeholder='Message' required autocomplete="off">
+                        <button id='submit'>Send</button>
+                    </form>
+                    <button id='location'>Share Location</button>
+                </div>
+                
+            </div>
+        </div>
+        <script id='system-messages-template' type='text/html'>
+            <div class="system-message">
+                <p>
+                    <span> {{message}} </span> 
+                    <span class="message__meta"> {{createdAt}} </span>
+                </p>
+            </div>
+        </script>
+        <script id='messages-template' type='text/html'>
+            <div class="message">
+                <p> 
+                    <span class="message__name"> {{username}} </span>
+                    <span class="message__meta"> {{createdAt}} </span>
+                </p>
+                <p>
+                    <span> {{message}} </span>
+                </p>
+            </div>
+        </script>
+
+        <script id='location-template' type='text/html'>
+            <div class="message">
+                <p> 
+                    <span class="message__name"> {{username}} </span>
+                    <span class="message__meta"> {{createdAt}} </span>
+                </p>
+                <p>
+                    <span> <a href='{{url}}' target="_blank"> User's current location </a>  </span>
+                </p>
+            </div>
+        </script>
+
+        <script id='sidebar-template' type='text/html'>
+            <div class="chat__sidebar">
+                <h2 class="room-title">{{room}}</h2>
+                <h3 class="list-title">Users</h3>
+                <ul class="users">
+                    {{#users}}
+                        <li> {{username}} </li>
+                    {{/users}}
+                </ul>
+            </div>
+        </script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.0.1/mustache.min.js"></script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js"></script>
+        <script src="socket.io/socket.io.js"></script>
+        <script src="/js/chat.js"></script>
+
+    </body>
+</html>
