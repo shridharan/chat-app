@@ -58,7 +58,7 @@ socket.on('onlineUsers', ({room, users})=> {
 socket.on('broadcastLocation', (location)=>{
     const rendered = Mustache.render($locationTemplate, {
         url:location.url, 
-        username:msg.username,
+        username:location.username,
         createdAt:moment(location.createdAt).format(timeFormat)
     })
     $messages.insertAdjacentHTML('beforeend',rendered)
